@@ -2,6 +2,6 @@
 
 public interface IUserCommunicator
 {
-    public void Print(string message);
+    void Print(string message);
     char GetKey();
 }

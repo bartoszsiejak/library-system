@@ -9,6 +9,30 @@ public class LibrarySystemApp(IUserCommunicator userCommunicator)
     public void Run()
     {
         _userCommunicator.Print(GetMainMenu());
+        SelectOptionByUser();
+    }
+
+    private void SelectOptionByUser()
+    {
+        while (true)
+        {
+            var chosenOption = _userCommunicator.GetKey();
+
+            switch (char.ToUpper(chosenOption))
+            {
+                case 'S':
+                    //SearchBook();
+                    break;
+                case 'A':
+                    //AddBook();
+                    break;
+                case 'M':
+                    //ManageCustomers();
+                    break;
+                case 'E':
+                    return;
+            }
+        }
     }
 
     private string GetMainMenu()
@@ -22,4 +46,5 @@ public class LibrarySystemApp(IUserCommunicator userCommunicator)
                 [E]xit
                """;
     }
+    
 }
