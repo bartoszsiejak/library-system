@@ -30,7 +30,8 @@ public class LibrarySystemApp(IUserCommunicator userCommunicator)
                     //ManageCustomers();
                     break;
                 case 'E':
-                    return;
+                    Exit();
+                    break;
             }
         }
     }
@@ -46,5 +47,9 @@ public class LibrarySystemApp(IUserCommunicator userCommunicator)
                 [E]xit
                """;
     }
-    
+
+    private void Exit()
+    {
+        Environment.Exit(0);
+    }
 }
