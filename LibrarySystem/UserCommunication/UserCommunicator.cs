@@ -6,4 +6,9 @@ public class UserCommunicator : IUserCommunicator
     {
         Console.WriteLine(message);
     }
+
+    public char GetKey()
+    {
+        return Console.ReadKey(true).KeyChar;
+    }
 }
