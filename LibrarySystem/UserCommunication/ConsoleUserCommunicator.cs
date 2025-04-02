@@ -1,6 +1,6 @@
 ﻿namespace LibrarySystem.UserCommunication;
 
-public class UserCommunicator(IConsole consoleWrapper) : IUserCommunicator
+public class ConsoleUserCommunicator(IConsole consoleWrapper) : IUserCommunicator
 {
     private readonly IConsole _consoleWrapper = consoleWrapper;
     public void Print(string message)

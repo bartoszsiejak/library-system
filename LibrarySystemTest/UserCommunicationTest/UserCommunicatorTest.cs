@@ -4,15 +4,15 @@ using Moq;
 
 namespace LibrarySystemTest.UserCommunicationTest;
 
-public class UserCommunicatorTest
+public class ConsoleUserCommunicatorTest
 {
     private readonly Mock<IConsole> mock;
-    private readonly UserCommunicator cut;
+    private readonly ConsoleUserCommunicator cut;
 
-    public UserCommunicatorTest()
+    public ConsoleUserCommunicatorTest()
     {
         mock = new Mock<IConsole>();
-        cut = new UserCommunicator(mock.Object);
+        cut = new ConsoleUserCommunicator(mock.Object);
     }
     
     [Fact]
