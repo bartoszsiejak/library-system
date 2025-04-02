@@ -4,7 +4,7 @@ using LibrarySystem.UserCommunication;
 try
 {
     new LibrarySystemApp(
-            new UserCommunicator())
+            new UserCommunicator(new ConsoleWrapper()))
         .Run();
 }
 catch (Exception ex)

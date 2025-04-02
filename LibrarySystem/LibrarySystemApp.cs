@@ -1,10 +1,12 @@
-﻿using LibrarySystem.UserCommunication;
+﻿using LibrarySystem.Data;
+using LibrarySystem.UserCommunication;
 
 namespace LibrarySystem;
 
 public class LibrarySystemApp(IUserCommunicator userCommunicator)
 {
     private readonly IUserCommunicator _userCommunicator = userCommunicator;
+    public List<Book> Books { get; private set; } = [];
 
     public void Run()
     {
@@ -12,6 +14,18 @@ public class LibrarySystemApp(IUserCommunicator userCommunicator)
         SelectOptionByUser();
     }
 
+    private string GetMainMenu()
+    {
+        return """
+               [S]earch book
+               [A]dd book
+               [M]anage customers
+               [O]ptions
+                               
+               [E]xit
+               """;
+    }
+    
     private void SelectOptionByUser()
     {
         while (true)
@@ -24,7 +38,8 @@ public class LibrarySystemApp(IUserCommunicator userCommunicator)
                     //SearchBook();
                     break;
                 case 'A':
-                    //AddBook();
+                    var book = CreateBookFromUser();
+                    Books.Add(book);
                     break;
                 case 'M':
                     //ManageCustomers();
@@ -33,19 +48,17 @@ public class LibrarySystemApp(IUserCommunicator userCommunicator)
                     Exit();
                     break;
             }
+            
+            return;
         }
     }
 
-    private string GetMainMenu()
+    private Book CreateBookFromUser()
     {
-        return """
-                [S]earch book
-                [A]dd book
-                [M]anage customers
-                [O]ptions
-                
-                [E]xit
-               """;
+        var tittle = _userCommunicator.GetValidTittle();
+        var author = _userCommunicator.GetValidAuthor();
+
+        return new Book();
     }
 
     private void Exit()
