@@ -2,8 +2,8 @@
 
 public interface IUserCommunicator
 {
+    char ReadOptionFromUser();
+    string ReadStringFromUser();
     void Print(string message);
-    char GetKey();
-    string GetValidTittle();
-    string GetValidAuthor();
+    void ClearWindow();
 }

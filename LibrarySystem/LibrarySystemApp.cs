@@ -1,38 +1,33 @@
-﻿using LibrarySystem.Data;
+﻿using LibrarySystem.BookModel;
 using LibrarySystem.UserCommunication;
 
 namespace LibrarySystem;
 
-public class LibrarySystemApp(IUserCommunicator userCommunicator)
+public class LibrarySystemApp(
+    IUserCommunicator userCommunicator,
+    IBookValidator bookValidator)
 {
     private readonly IUserCommunicator _userCommunicator = userCommunicator;
+    private readonly IBookValidator _bookValidator = bookValidator;
     public List<Book> Books { get; private set; } = [];
+
+    private const string Menu = """
+                                [S]earch book
+                                [A]dd book
+                                [M]anage customers
+                                [O]ptions
+                                                
+                                [E]xit
+                                """;
 
     public void Run()
     {
-        _userCommunicator.Print(GetMainMenu());
-        SelectOptionByUser();
-    }
-
-    private string GetMainMenu()
-    {
-        return """
-               [S]earch book
-               [A]dd book
-               [M]anage customers
-               [O]ptions
-                               
-               [E]xit
-               """;
-    }
-    
-    private void SelectOptionByUser()
-    {
         while (true)
         {
-            var chosenOption = _userCommunicator.GetKey();
+            _userCommunicator.Print(Menu);
+            var userOption = _userCommunicator.ReadOptionFromUser();
 
-            switch (char.ToUpper(chosenOption))
+            switch (char.ToUpper(userOption))
             {
                 case 'S':
                     //SearchBook();
@@ -45,24 +40,39 @@ public class LibrarySystemApp(IUserCommunicator userCommunicator)
                     //ManageCustomers();
                     break;
                 case 'E':
-                    Exit();
+                    return;
+                default:
+                    _userCommunicator.Print("Invalid option");
                     break;
             }
-            
-            return;
+
+            _userCommunicator.ClearWindow();
         }
     }
 
     private Book CreateBookFromUser()
     {
-        var tittle = _userCommunicator.GetValidTittle();
-        var author = _userCommunicator.GetValidAuthor();
+        var title = ReadValid("title", _bookValidator.IsValidTitle);
+        var author = ReadValid("author", _bookValidator.IsValidAuthor);
 
         return new Book();
     }
 
-    private void Exit()
+    private string ReadValid(string nameOfStringToRead, Func<string, bool> validator)
     {
-        Environment.Exit(0);
+        while (true)
+        {
+            _userCommunicator.Print($"Enter the {nameOfStringToRead}: ");
+            var stringToRead = _userCommunicator.ReadStringFromUser();
+            
+            if (!validator(stringToRead))
+            {
+                _userCommunicator.Print($"Invalid {nameOfStringToRead}!");
+            }
+            else
+            {
+                return stringToRead;
+            }
+        } 
     }
 }
