@@ -6,4 +6,5 @@ public interface IUserCommunicator
     string ReadStringFromUser();
     void Print(string message);
     void ClearWindow();
+    void WaitForKey();
 }

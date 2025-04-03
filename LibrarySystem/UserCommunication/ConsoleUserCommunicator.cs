@@ -25,4 +25,10 @@ public class ConsoleUserCommunicator(
     {
         _consoleWrapper.Clear();
     }
+
+    public void WaitForKey()
+    {
+        _consoleWrapper.WriteLine("Press any key to continue...");
+        _consoleWrapper.ReadKey(true);
+    }
 }

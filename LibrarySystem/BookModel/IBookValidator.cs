@@ -2,6 +2,7 @@
 
 public interface IBookValidator
 {
-    public bool IsValidTitle(string title);
-    public bool IsValidAuthor(string author);
+    bool IsValidTitle(string title);
+    bool IsValidAuthor(string author);
+    bool IsValidIsbn(string isbn);
 }

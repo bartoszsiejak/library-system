@@ -9,7 +9,7 @@ public class LibrarySystemApp(
 {
     private readonly IUserCommunicator _userCommunicator = userCommunicator;
     private readonly IBookValidator _bookValidator = bookValidator;
-    public List<Book> Books { get; private set; } = [];
+    private readonly List<Book> _books = [];
 
     private const string Menu = """
                                 [S]earch book
@@ -26,15 +26,15 @@ public class LibrarySystemApp(
         {
             _userCommunicator.Print(Menu);
             var userOption = _userCommunicator.ReadOptionFromUser();
-
+            _userCommunicator.ClearWindow();
+            
             switch (char.ToUpper(userOption))
             {
                 case 'S':
                     //SearchBook();
                     break;
                 case 'A':
-                    var book = CreateBookFromUser();
-                    Books.Add(book);
+                    AddBookToLibrary();
                     break;
                 case 'M':
                     //ManageCustomers();
@@ -42,20 +42,30 @@ public class LibrarySystemApp(
                 case 'E':
                     return;
                 default:
-                    _userCommunicator.Print("Invalid option");
+                    _userCommunicator.Print("Invalid option!");
                     break;
             }
-
+            _userCommunicator.WaitForKey();
             _userCommunicator.ClearWindow();
         }
+    }
+
+    private void AddBookToLibrary()
+    {
+        var book = CreateBookFromUser();
+        _books.Add(book);
+        _userCommunicator.ClearWindow();
+        _userCommunicator.Print("Book added: ");
+        _userCommunicator.Print(book.ToString());
     }
 
     private Book CreateBookFromUser()
     {
         var title = ReadValid("title", _bookValidator.IsValidTitle);
         var author = ReadValid("author", _bookValidator.IsValidAuthor);
+        var isbn = ReadValid("ISBN", _bookValidator.IsValidIsbn);
 
-        return new Book();
+        return new Book(title, author, isbn);
     }
 
     private string ReadValid(string nameOfStringToRead, Func<string, bool> validator)
