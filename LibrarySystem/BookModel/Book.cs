@@ -16,6 +16,21 @@ public class Book(string title, string author, string isbn)
 
                 """;
     }
+
+    public override bool Equals(object? obj)
+    {
+        return obj is Book item && Equals(item);
+    }
+
+    private bool Equals(Book other)
+    {
+        return Isbn == other.Isbn;
+    }
+
+    public override int GetHashCode()
+    {
+        return Isbn.GetHashCode();
+    }
 }
 
 public class Customer

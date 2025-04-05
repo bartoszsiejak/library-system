@@ -31,4 +31,22 @@ public class ConsoleUserCommunicator(
         _consoleWrapper.WriteLine("Press any key to continue...");
         _consoleWrapper.ReadKey(true);
     }
+    
+    public string ReadValidFromUser(string nameOfStringToRead, Func<string, bool> validator)
+    {
+        while (true)
+        {
+            Print($"Enter the {nameOfStringToRead}: ");
+            var stringToRead = ReadStringFromUser();
+
+            if (!validator(stringToRead))
+            {
+                Print($"Invalid {nameOfStringToRead}!");
+            }
+            else
+            {
+                return stringToRead;
+            }
+        }
+    }
 }
