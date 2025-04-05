@@ -1,4 +1,4 @@
-﻿namespace LibrarySystem.BookModel;
+﻿namespace LibrarySystem.Validation;
 
 public interface IBookValidator
 {

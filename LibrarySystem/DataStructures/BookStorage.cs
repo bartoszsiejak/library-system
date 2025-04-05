@@ -1,13 +1,19 @@
-﻿using LibrarySystem.BookModel;
+﻿using LibrarySystem.Models;
+using LibrarySystem.Models.BookModel;
 
 namespace LibrarySystem.DataStructures;
 
-public class BookStorage : IBookStorage
+public class BookStorage(List<Book> books) : IBookStorage
 {
-    private readonly List<Book> _books = [];
+    public List<Book> Books { get; } = books;
 
     public void Add(Book book)
     {
-        _books.Add(book);
+        Books.Add(book);
+    }
+
+    public void Remove(Book book)
+    {
+        Books.Remove(book);
     }
 }

@@ -1,6 +1,8 @@
-﻿using LibrarySystem.BookModel;
-using LibrarySystem.DataStructures;
+﻿using LibrarySystem.DataStructures;
+using LibrarySystem.Models;
+using LibrarySystem.Models.BookModel;
 using LibrarySystem.UserCommunication;
+using LibrarySystem.Validation;
 
 namespace LibrarySystem.Menus.Options;
 

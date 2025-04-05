@@ -1,4 +1,6 @@
-﻿namespace LibrarySystem.BookModel;
+﻿using LibrarySystem.Models.CustomerModel;
+
+namespace LibrarySystem.Models.BookModel;
 
 public class Book(string title, string author, string isbn)
 {
@@ -7,12 +9,29 @@ public class Book(string title, string author, string isbn)
     public string Isbn { get; } = isbn;
     public Customer? Borrower { get; private set; }
 
+    public void Lend(Customer customer)
+    {
+        Borrower = customer;
+        customer.Borrow(this);
+    }
+
+    public void Return()
+    {
+        if (Borrower is null)
+        {
+            throw new NullReferenceException("Cannot return null borrower");
+        }
+        
+        Borrower.BorrowedBooks.Remove(this);
+        Borrower = null;
+    }
+
     public override string ToString()
     {
         return $"""
                 Title: {Title}
                 Author: {Author}
-                ISBN-{Isbn.Length}: {Isbn}
+                ISBN: {Isbn}
 
                 """;
     }
@@ -31,10 +50,4 @@ public class Book(string title, string author, string isbn)
     {
         return Isbn.GetHashCode();
     }
-}
-
-public class Customer
-{
-    public string FirstName { get; }
-    public string LastName { get; }
 }

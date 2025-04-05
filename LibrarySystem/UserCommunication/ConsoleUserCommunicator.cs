@@ -16,6 +16,22 @@ public class ConsoleUserCommunicator(
         return _consoleWrapper.ReadLine() ?? string.Empty;
     }
 
+    public uint ReadCustomerIdFromUser()
+    {
+        while (true)
+        {
+            _consoleWrapper.Write("Enter Customer ID: ");
+            var id = _consoleWrapper.ReadLine();
+            var isParsable = uint.TryParse(id, out var customerId);
+
+            if (isParsable)
+            {
+                return customerId;
+            }
+            _consoleWrapper.WriteLine("Customer ID must be a number!");
+        }
+    }
+
     public void Print(string message)
     {
         _consoleWrapper.WriteLine(message);
@@ -48,5 +64,28 @@ public class ConsoleUserCommunicator(
                 return stringToRead;
             }
         }
+    }
+
+    public int ReadValidBookIndexFromUser(int numberOfItems)
+    {
+        while (true)
+        {
+            _consoleWrapper.Write("Index of book: ");
+            var userOption =_consoleWrapper.ReadLine();
+            var canIParse = int.TryParse(userOption, out var indexOfBook);
+            
+            if (!canIParse)
+            {
+                _consoleWrapper.WriteLine("Index must be an integer!");
+            }
+            else if (indexOfBook > numberOfItems || indexOfBook < 1)
+            {
+                _consoleWrapper.WriteLine("Book index is out of range!");
+            }
+            else
+            {
+                return indexOfBook;
+            }
+        } 
     }
 }

@@ -1,19 +1,19 @@
-﻿using LibrarySystem.BookModel;
-using LibrarySystem.DataStructures;
+﻿using LibrarySystem.DataStructures;
 using LibrarySystem.Menus;
 using LibrarySystem.UserCommunication;
+using LibrarySystem.Validation;
 
 namespace LibrarySystem;
 
 public class LibrarySystemApp(
     IUserCommunicator userCommunicator,
     IBookValidator bookValidator,
-    IMenu mainMenu,
+    IExecutionMenu mainMenu,
     IBookStorage bookStorage)
 {
     private readonly IUserCommunicator _userCommunicator = userCommunicator;
     private readonly IBookValidator _bookValidator = bookValidator;
-    private readonly IMenu _mainMenu = mainMenu;
+    private readonly IExecutionMenu _mainMenu = mainMenu;
     private readonly IBookStorage _booksStorage = bookStorage;
 
 
@@ -23,6 +23,11 @@ public class LibrarySystemApp(
         {
             _mainMenu.Render();
             var userOption = _userCommunicator.ReadOptionFromUser();
+
+            if (_mainMenu.ShouldIExitMenu(userOption))
+            {
+                return;
+            }
 
             if (_mainMenu.IsValidOption(userOption))
             {

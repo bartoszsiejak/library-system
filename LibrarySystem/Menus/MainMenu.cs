@@ -1,19 +1,21 @@
 ﻿using LibrarySystem.Menus.Options;
+using LibrarySystem.Search;
 using LibrarySystem.UserCommunication;
 
 namespace LibrarySystem.Menus;
 
-public class MainMenu(IUserCommunicator userCommunicator, IOption addBookOption) : IMenu
+public class MainMenu(IUserCommunicator userCommunicator, IOption addBookOption, IOption manageBookOption) : IExecutionMenu
 {
     private readonly IUserCommunicator _userCommunicator = userCommunicator;
     private readonly Dictionary<char, IOption> _menuOptions = new()
     {
         { 'A', addBookOption },
+        { 'B', manageBookOption },
     };
 
     private const string Menu = """
-                                Manage [b]ook
-                                [A]dd book
+                                [B]ook manager
+                                [A]dd a book
                                 [M]anage customers
                                 [O]ptions
                                                 
@@ -29,6 +31,11 @@ public class MainMenu(IUserCommunicator userCommunicator, IOption addBookOption)
     public bool IsValidOption(char userOption)
     {
         return _menuOptions.ContainsKey(char.ToUpper(userOption));
+    }
+
+    public bool ShouldIExitMenu(char userOption)
+    {
+        return char.ToUpper(userOption).Equals('E');
     }
 
     public void Exec(char userOption)
