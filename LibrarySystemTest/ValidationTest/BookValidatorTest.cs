@@ -1,6 +1,6 @@
-﻿using LibrarySystem.BookModel;
+﻿using LibrarySystem.Validation;
 
-namespace LibrarySystemTest.BookModelTest;
+namespace LibrarySystemTest.ValidationTest;
 
 public class BookValidatorTest
 {

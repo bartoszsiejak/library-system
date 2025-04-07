@@ -6,32 +6,6 @@ public class ConsoleUserCommunicator(
 {
     private readonly IConsole _consoleWrapper = consoleWrapper;
     
-    public char ReadOptionFromUser()
-    {
-        return _consoleWrapper.ReadKey(true).KeyChar;
-    }
-
-    public string ReadStringFromUser()
-    {
-        return _consoleWrapper.ReadLine() ?? string.Empty;
-    }
-
-    public uint ReadCustomerIdFromUser()
-    {
-        while (true)
-        {
-            _consoleWrapper.Write("Enter Customer ID: ");
-            var id = _consoleWrapper.ReadLine();
-            var isParsable = uint.TryParse(id, out var customerId);
-
-            if (isParsable)
-            {
-                return customerId;
-            }
-            _consoleWrapper.WriteLine("Customer ID must be a number!");
-        }
-    }
-
     public void Print(string message)
     {
         _consoleWrapper.WriteLine(message);
@@ -46,6 +20,26 @@ public class ConsoleUserCommunicator(
     {
         _consoleWrapper.WriteLine("Press any key to continue...");
         _consoleWrapper.ReadKey(true);
+    }
+    public char ReadOptionFromUser()
+    {
+        return _consoleWrapper.ReadKey(true).KeyChar;
+    }
+    
+    public uint ReadCustomerIdFromUser()
+    {
+        while (true)
+        {
+            _consoleWrapper.Write("Enter Customer ID: ");
+            var id = _consoleWrapper.ReadLine();
+            var isParsable = uint.TryParse(id, out var customerId);
+
+            if (isParsable)
+            {
+                return customerId;
+            }
+            _consoleWrapper.WriteLine("Customer ID must be a positive integer!");
+        }
     }
     
     public string ReadValidFromUser(string nameOfStringToRead, Func<string, bool> validator)
@@ -87,5 +81,9 @@ public class ConsoleUserCommunicator(
                 return indexOfBook;
             }
         } 
+    }
+    private string ReadStringFromUser()
+    {
+        return _consoleWrapper.ReadLine() ?? string.Empty;
     }
 }
