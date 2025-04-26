@@ -16,7 +16,7 @@ public class BookSearcherByIsbn(
 
     public IEnumerable<Book> Search(IBookStorage bookStorage)
     {
-        var isbn = _userCommunicator.ReadValidFromUser("ISBN", _bookValidator.IsValidAuthor);
+        var isbn = _userCommunicator.ReadValidFromUser("ISBN", _bookValidator.IsValidIsbn);
         return bookStorage.Books.Where(book => book.Isbn == isbn);
     }
 }
