@@ -21,8 +21,7 @@ public class BookSearcherByTitleTest(SharedBookStorageFixture fixture)
         IUserCommunicatorMock.Setup(
                 console => console.ReadValidFromUser("title", bookValidator.IsValidTitle))
             .Returns("Love");
-
-
+        
         //Act
         var result = new BookSearcherByTitle(IUserCommunicatorMock.Object, bookValidator)
             .Search(fixture.BookStorageMock.Object);
