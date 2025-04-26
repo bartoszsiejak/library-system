@@ -11,8 +11,17 @@ public class Book(string title, string author, string isbn)
 
     public void Lend(Customer customer)
     {
+        if (Borrower is not null)
+        {
+            throw new InvalidOperationException("Borrower is not null.");
+        }
+        
         Borrower = customer;
-        customer.Borrow(this);
+
+        if (!customer.BorrowedBooks.Contains(this))
+        {
+            customer.Borrow(this);
+        }
     }
 
     public void Return()
@@ -21,7 +30,7 @@ public class Book(string title, string author, string isbn)
         {
             throw new NullReferenceException("Cannot return null borrower");
         }
-        
+
         Borrower.BorrowedBooks.Remove(this);
         Borrower = null;
     }
