@@ -6,7 +6,9 @@ namespace LibrarySystem.Menus;
 public class CustomerManagerMenu(
     IUserCommunicator userCommunicator,
     IOption registerCustomerOption,
-    IOption deleteCustomerOption) : IExecutionMenu
+    IOption deleteCustomerOption,
+    IOption findCustomerOption)
+    : IExecutionMenu
 {
     private readonly IUserCommunicator _userCommunicator = userCommunicator;
 
@@ -14,6 +16,7 @@ public class CustomerManagerMenu(
     {
         { 'R', registerCustomerOption },
         { 'D', deleteCustomerOption },
+        { 'F', findCustomerOption },
     };
 
     private const string Menu = """

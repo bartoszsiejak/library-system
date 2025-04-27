@@ -39,10 +39,12 @@ var manageBookOption = new ManageBookOption(
     new BooksPrinter(userCommunicator));
 var registerCustomerOption = new RegisterCustomerOption(userCommunicator, idGenerator, customerStorage);
 var deleteCustomerOption = new DeleteCustomerOption(userCommunicator, customerReader, customerStorage);
+var findCustomerOption = new FindCustomerOption(userCommunicator, customerReader);
 var customerManagerMenu = new CustomerManagerMenu(
     userCommunicator, 
     registerCustomerOption,
-    deleteCustomerOption);
+    deleteCustomerOption,
+    findCustomerOption);
 var manageCustomerOption = new ManageCustomerOption(userCommunicator, customerManagerMenu);
 
 var mainMenu = new MainMenu(userCommunicator, addBookOption, manageBookOption, manageCustomerOption);
