@@ -4,13 +4,19 @@ using LibrarySystem.UserCommunication;
 
 namespace LibrarySystem.Menus;
 
-public class MainMenu(IUserCommunicator userCommunicator, IOption addBookOption, IOption manageBookOption) : IExecutionMenu
+public class MainMenu(
+                        IUserCommunicator userCommunicator,
+                        IOption addBookOption,
+                        IOption manageBookOption,
+                        IOption manageCustomerOption) 
+                        : IExecutionMenu
 {
     private readonly IUserCommunicator _userCommunicator = userCommunicator;
     private readonly Dictionary<char, IOption> _menuOptions = new()
     {
         { 'A', addBookOption },
         { 'B', manageBookOption },
+        { 'M', manageCustomerOption }
     };
 
     private const string Menu = """

@@ -3,6 +3,7 @@ using LibrarySystem.DataStructures;
 using LibrarySystem.Menus;
 using LibrarySystem.Menus.Options;
 using LibrarySystem.Menus.Options.BookOption;
+using LibrarySystem.Menus.Options.CustomerOption;
 using LibrarySystem.Search;
 using LibrarySystem.UserCommunication;
 using LibrarySystem.Validation;
@@ -33,7 +34,10 @@ var manageBookOption = new ManageBookOption(
     bookStorage,
     bookManagerMenu,
     new BooksPrinter(userCommunicator));
-var mainMenu = new MainMenu(userCommunicator, addBookOption, manageBookOption);
+var customerManagerMenu = new CustomerManagerMenu(userCommunicator, new RegisterCustomerOption());
+var manageCustomerOption = new ManageCustomerOption(userCommunicator, customerManagerMenu);
+
+var mainMenu = new MainMenu(userCommunicator, addBookOption, manageBookOption, manageCustomerOption);
 
 try
 {
