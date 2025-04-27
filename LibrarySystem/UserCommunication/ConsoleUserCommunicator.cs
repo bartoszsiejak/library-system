@@ -82,6 +82,25 @@ public class ConsoleUserCommunicator(
             }
         } 
     }
+
+    public bool GetYesOrNo()
+    {
+        while (true)
+        {
+            var userOption = _consoleWrapper.ReadLine();
+
+            switch (userOption)
+            {
+                case "Y" or "y":
+                    return true;
+                case "N" or "n":
+                    return false;
+            }
+            
+            _consoleWrapper.WriteLine("Invalid option! Type Y or N");
+        }
+    }
+
     private string ReadStringFromUser()
     {
         return _consoleWrapper.ReadLine() ?? string.Empty;

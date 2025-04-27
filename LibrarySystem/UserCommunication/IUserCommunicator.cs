@@ -9,4 +9,5 @@ public interface IUserCommunicator
     uint ReadCustomerIdFromUser();
     string ReadValidFromUser(string nameOfStringToRead, Func<string, bool> validator);
     int ReadValidBookIndexFromUser(int numberOfItems);
+    bool GetYesOrNo();
 }

@@ -5,13 +5,15 @@ namespace LibrarySystem.Menus;
 
 public class CustomerManagerMenu(
     IUserCommunicator userCommunicator,
-    IOption registerCustomerOption) : IExecutionMenu
+    IOption registerCustomerOption,
+    IOption deleteCustomerOption) : IExecutionMenu
 {
     private readonly IUserCommunicator _userCommunicator = userCommunicator;
 
     private readonly Dictionary<char, IOption> _customerMenuOption = new()
     {
         { 'R', registerCustomerOption },
+        { 'D', deleteCustomerOption },
     };
 
     private const string Menu = """

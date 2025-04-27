@@ -11,6 +11,7 @@ using LibrarySystem.Validation;
 
 var bookStorage = new BookStorage([]);
 var customerStorage = new CustomerStorage([]);
+var customerReader = new CustomerReader(customerStorage);
 var idGenerator = new IdGenerator(0);
 
 var userCommunicator = new ConsoleUserCommunicator(new ConsoleWrapper());
@@ -36,9 +37,12 @@ var manageBookOption = new ManageBookOption(
     bookStorage,
     bookManagerMenu,
     new BooksPrinter(userCommunicator));
+var registerCustomerOption = new RegisterCustomerOption(userCommunicator, idGenerator, customerStorage);
+var deleteCustomerOption = new DeleteCustomerOption(userCommunicator, customerReader, customerStorage);
 var customerManagerMenu = new CustomerManagerMenu(
     userCommunicator, 
-    new RegisterCustomerOption(userCommunicator, idGenerator, customerStorage));
+    registerCustomerOption,
+    deleteCustomerOption);
 var manageCustomerOption = new ManageCustomerOption(userCommunicator, customerManagerMenu);
 
 var mainMenu = new MainMenu(userCommunicator, addBookOption, manageBookOption, manageCustomerOption);
