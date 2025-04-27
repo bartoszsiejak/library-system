@@ -13,10 +13,3 @@ public class CustomerStorage(Dictionary<uint, Customer>  customers) : ICustomerS
         Customers.Add(customer.Id, customer);
     }
 }
-
-public interface ICustomerStorage
-{
-    Dictionary<uint, Customer> Customers { get; }
-    public void Add(Customer customer);
-
-}

@@ -1,4 +1,5 @@
 ﻿using LibrarySystem;
+using LibrarySystem.DataGeneration;
 using LibrarySystem.DataStructures;
 using LibrarySystem.Menus;
 using LibrarySystem.Menus.Options;
@@ -10,6 +11,7 @@ using LibrarySystem.Validation;
 
 var bookStorage = new BookStorage([]);
 var customerStorage = new CustomerStorage([]);
+var idGenerator = new IdGenerator(0);
 
 var userCommunicator = new ConsoleUserCommunicator(new ConsoleWrapper());
 var bookValidator = new BookValidator();
@@ -34,7 +36,9 @@ var manageBookOption = new ManageBookOption(
     bookStorage,
     bookManagerMenu,
     new BooksPrinter(userCommunicator));
-var customerManagerMenu = new CustomerManagerMenu(userCommunicator, new RegisterCustomerOption());
+var customerManagerMenu = new CustomerManagerMenu(
+    userCommunicator, 
+    new RegisterCustomerOption(userCommunicator, idGenerator, customerStorage));
 var manageCustomerOption = new ManageCustomerOption(userCommunicator, customerManagerMenu);
 
 var mainMenu = new MainMenu(userCommunicator, addBookOption, manageBookOption, manageCustomerOption);

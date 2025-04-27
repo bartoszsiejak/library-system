@@ -27,4 +27,9 @@ public class Customer(uint id, string firstName, string lastName)
     {
         book.Return();
     }
+
+    public override string ToString()
+    {
+        return $"ID: {Id}, Name: {FirstName}, Surname: {LastName}";
+    }
 }
