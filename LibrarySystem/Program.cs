@@ -16,6 +16,7 @@ var idGenerator = new IdGenerator(0);
 
 var userCommunicator = new ConsoleUserCommunicator(new ConsoleWrapper());
 var bookValidator = new BookValidator();
+
 var addBookOption = new AddBookOption(userCommunicator, bookValidator, bookStorage);
 var bookSearcherByTitle = new BookSearcherByTitle(userCommunicator, bookValidator);
 var bookSearcherByAuthor = new BookSearcherByAuthor(userCommunicator, bookValidator);
@@ -37,6 +38,7 @@ var manageBookOption = new ManageBookOption(
     bookStorage,
     bookManagerMenu,
     new BooksPrinter(userCommunicator));
+
 var registerCustomerOption = new RegisterCustomerOption(userCommunicator, idGenerator, customerStorage);
 var deleteCustomerOption = new DeleteCustomerOption(userCommunicator, customerReader, customerStorage);
 var findCustomerOption = new FindCustomerOption(userCommunicator, customerReader);
@@ -57,6 +59,7 @@ try
             mainMenu,
             bookStorage)
         .Run();
+            
 }
 catch (Exception ex)
 {

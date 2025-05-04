@@ -7,7 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a4fd472-8e83-4a89-8edb-4a93d2af8ebb" name="Changes" comment="" />
+    <list default="true" id="2a4fd472-8e83-4a89-8edb-4a93d2af8ebb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/LibrarySystem/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibrarySystem/Program.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,7 +61,7 @@
     ".NET Project.LibrarySystem.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "manage-customers-menu",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -69,7 +71,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected=".NET Project.LibrarySystem">
+  <component name="RunManager">
     <configuration name="LibrarySystem" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/LibrarySystem/bin/Debug/net9.0/LibrarySystem.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
