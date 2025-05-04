@@ -11,8 +11,9 @@ using LibrarySystem.Validation;
 
 var bookStorage = new BookStorage([]);
 var customerStorage = new CustomerStorage([]);
-var customerReader = new CustomerReader(customerStorage);
 var idGenerator = new IdGenerator(0);
+
+var customerReader = new CustomerReader(customerStorage);
 
 var userCommunicator = new ConsoleUserCommunicator(new ConsoleWrapper());
 var bookValidator = new BookValidator();
@@ -59,7 +60,6 @@ try
             mainMenu,
             bookStorage)
         .Run();
-            
 }
 catch (Exception ex)
 {
