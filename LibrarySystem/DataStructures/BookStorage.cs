@@ -17,3 +17,4 @@ public class BookStorage(List<Book> books) : IBookStorage
         Books.Remove(book);
     }
 }
+
