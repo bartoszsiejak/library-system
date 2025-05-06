@@ -9,7 +9,14 @@
   <component name="ChangeListManager">
     <list default="true" id="2a4fd472-8e83-4a89-8edb-4a93d2af8ebb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LibrarySystem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LibrarySystem/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibrarySystem/DataGeneration/IdGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibrarySystem/DataGeneration/IdGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibrarySystem/DataStructures/BookStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibrarySystem/DataStructures/BookStorage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibrarySystem/DataStructures/CustomerStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibrarySystem/DataStructures/CustomerStorage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibrarySystem/DataStructures/IBookStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibrarySystem/DataStructures/IBookStorage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibrarySystem/DataStructures/ICustomerStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibrarySystem/DataStructures/ICustomerStorage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibrarySystem/LibrarySystemApp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibrarySystem/LibrarySystemApp.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LibrarySystem/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibrarySystem/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibrarySystemTest/DataGenerationTest/IdGeneratorTest.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +122,7 @@
       <workItem from="1745676267063" duration="4653000" />
       <workItem from="1745756740331" duration="87000" />
       <workItem from="1745756840045" duration="10609000" />
-      <workItem from="1746524116892" duration="818000" />
+      <workItem from="1746524116892" duration="2903000" />
     </task>
     <servers />
   </component>

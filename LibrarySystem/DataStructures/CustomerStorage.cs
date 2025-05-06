@@ -4,9 +4,9 @@ using LibrarySystem.Models.CustomerModel;
 
 namespace LibrarySystem.DataStructures;
 
-public class CustomerStorage(Dictionary<uint, Customer> customers) : ICustomerStorage
+public class CustomerStorage : ICustomerStorage
 {
-    public Dictionary<uint, Customer> Customers { get; } = customers;
+    public Dictionary<uint, Customer> Customers { get; private set; } = [];
 
     public void Add(Customer customer)
     {
@@ -16,5 +16,10 @@ public class CustomerStorage(Dictionary<uint, Customer> customers) : ICustomerSt
     public void Remove(Customer customer)
     {
         Customers.Remove(customer.Id);
+    }
+
+    public void LoadCustomers(Dictionary<uint, Customer> customers)
+    {
+       Customers = customers;
     }
 }

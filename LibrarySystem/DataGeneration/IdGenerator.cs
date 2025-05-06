@@ -1,16 +1,19 @@
-﻿using LibrarySystem.Menus.Options.CustomerOption;
+﻿using LibrarySystem.DataStructures;
+using LibrarySystem.Menus.Options.CustomerOption;
 
 namespace LibrarySystem.DataGeneration;
 
-public class IdGenerator(uint id) : IIdGenerator
+public class CustomerIdGenerator(ICustomerStorage customerStorage) : IIdGenerator
 {
-    private uint _id = id;
+    private readonly ICustomerStorage _customerStorage = customerStorage;
 
     public uint GetId()
     {
         checked
-        {
-            return _id++;
+        {   
+            return _customerStorage.Customers.Keys.Count != 0 ?
+                _customerStorage.Customers.Keys.Max() + 1 :
+                0u;
         }
     }
 }

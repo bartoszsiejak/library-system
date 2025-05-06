@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using LibrarySystem;
+﻿using LibrarySystem;
 using LibrarySystem.DataGeneration;
 using LibrarySystem.DataStructures;
 using LibrarySystem.File;
@@ -10,26 +9,22 @@ using LibrarySystem.Menus.Options;
 using LibrarySystem.Menus.Options.BookOption;
 using LibrarySystem.Menus.Options.CustomerOption;
 using LibrarySystem.Models;
-using LibrarySystem.Models.BookModel;
-using LibrarySystem.Models.CustomerModel;
 using LibrarySystem.Search;
 using LibrarySystem.UserCommunication;
 using LibrarySystem.Validation;
 
+
+
+
+
+var bookStorage = new BookStorage();
+var customerStorage = new CustomerStorage();
+var customerIdGenerator = new CustomerIdGenerator(customerStorage);
+var customerReader = new CustomerReader(customerStorage);
 var file = new FileWrapper();
 var jsonParser = new JsonParser();
 var dataReader = new LibraryDataReader(file, jsonParser);
 var dataWriter = new LibraryDataWriter(file, jsonParser);
-const string Path = "data.json";
-
-var libraryData = dataReader.Read(Path);
-var bookStorage = new BookStorage(libraryData.Books);
-var customerStorage = new CustomerStorage(libraryData.Customers);
-
-var id = libraryData.Customers.Keys.Any() ? libraryData.Customers.Keys.Max() + 1 : 0u;
-var idGenerator = new IdGenerator(id);
-
-var customerReader = new CustomerReader(customerStorage);
 
 var userCommunicator = new ConsoleUserCommunicator(new ConsoleWrapper());
 var bookValidator = new BookValidator();
@@ -56,7 +51,7 @@ var manageBookOption = new ManageBookOption(
     bookManagerMenu,
     new BooksPrinter(userCommunicator));
 
-var registerCustomerOption = new RegisterCustomerOption(userCommunicator, idGenerator, customerStorage);
+var registerCustomerOption = new RegisterCustomerOption(userCommunicator, customerIdGenerator, customerStorage);
 var deleteCustomerOption = new DeleteCustomerOption(userCommunicator, customerReader, customerStorage);
 var findCustomerOption = new FindCustomerOption(userCommunicator, customerReader);
 var customerManagerMenu = new CustomerManagerMenu(
@@ -68,14 +63,21 @@ var manageCustomerOption = new ManageCustomerOption(userCommunicator, customerMa
 
 var mainMenu = new MainMenu(userCommunicator, addBookOption, manageBookOption, manageCustomerOption);
 
+const string Path = "data.json";
 try
 {
     new LibrarySystemApp(
             userCommunicator,
             bookValidator,
             mainMenu,
-            bookStorage)
+            bookStorage,
+            customerStorage,
+            file,
+            dataReader,
+            dataWriter,
+            Path)
         .Run();
+    
     dataWriter.Save(
         Path,
         new LibraryData(bookStorage.Books, customerStorage.Customers));

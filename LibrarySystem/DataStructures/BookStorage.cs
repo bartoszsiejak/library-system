@@ -3,9 +3,9 @@ using LibrarySystem.Models.BookModel;
 
 namespace LibrarySystem.DataStructures;
 
-public class BookStorage(List<Book> books) : IBookStorage
+public class BookStorage : IBookStorage
 {
-    public List<Book> Books { get; } = books;
+    public List<Book> Books { get; private set; } = [];
 
     public void Add(Book book)
     {
@@ -16,5 +16,8 @@ public class BookStorage(List<Book> books) : IBookStorage
     {
         Books.Remove(book);
     }
+    public void LoadBooks(List<Book> books)
+    {
+        Books = books;
+    }
 }
-
