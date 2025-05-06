@@ -9,7 +9,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2a4fd472-8e83-4a89-8edb-4a93d2af8ebb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LibrarySystem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LibrarySystem/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LibrarySystem/DataStructures/BookStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibrarySystem/DataStructures/BookStorage.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LibrarySystem/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibrarySystem/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,22 +55,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Project.LibrarySystem.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.LibrarySystem.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected=".NET Project.LibrarySystem">
+}</component>
+  <component name="RunManager">
     <configuration name="LibrarySystem" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/LibrarySystem/bin/Debug/net9.0/LibrarySystem.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -116,6 +115,7 @@
       <workItem from="1745676267063" duration="4653000" />
       <workItem from="1745756740331" duration="87000" />
       <workItem from="1745756840045" duration="10609000" />
+      <workItem from="1746524116892" duration="818000" />
     </task>
     <servers />
   </component>
@@ -153,6 +153,19 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/LibrarySystem/LibraryDataStream/LibraryDataReader.cs</url>
+          <line>6</line>
+          <properties documentPath="C:\Users\barto\RiderRepo\LibrarySystem\LibrarySystem\DataStoring\LibraryDataReader.cs" containingFunctionPresentation="Constructor 'LibraryDataReader'">
+            <startOffsets>
+              <option value="144" />
+            </startOffsets>
+            <endOffsets>
+              <option value="193" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
